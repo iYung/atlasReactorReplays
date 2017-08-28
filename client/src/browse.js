@@ -2,30 +2,10 @@ import React, { Component } from 'react';
 import {
   Header,
   Segment,
-  Grid,
-  Button,
-  Icon
+  Grid
 } from 'semantic-ui-react'
 
-class Upload extends Component {
-  
-  onChange () {
-    var f = document.getElementById("input").files[0];
-    var r = new FileReader();
-    r.onload = function(e) {
-      try {
-        var data = JSON.parse(JSON.parse(r.result)["m_teamInfo_Serialized"]);
-        alert(data["TeamPlayerInfo"]);
-      } catch (error) {
-        alert("Invalid file was uploaded!");
-      }
-    }
-    r.readAsText(f);
-  }
-  
-  uploadButtonPress () {
-    document.getElementById("input").click();
-  }
+class Browse extends Component {
   
   render() {
     return (
@@ -33,14 +13,9 @@ class Upload extends Component {
       <Segment inverted basic style={{ margin: "0 auto",  textAlign: "center", paddingBottom: '2em' }}>
         <Header
             as='h1' inverted
-            content='Upload a New Replay'
+            content='Browse Replays'
             style={{ fontSize: '3em', fontWeight: 'normal', textAlign: "center", paddingBottom: '.5em' }}
         />
-          <input type="file" id="input" style={{ textAlign: "center", display: "none"}} onChange={this.onChange}/>
-          <Button as='a' primary size='large' onClick={this.uploadButtonPress}>
-          Select an .arr file
-          <Icon name='right arrow' />
-          </Button>
       </Segment>
        <Segment style={{ padding: '8em 0em' }} vertical>
           <Grid container stackable verticalAlign='middle'>
@@ -65,4 +40,4 @@ class Upload extends Component {
   }
 }
 
-export default Upload;
+export default Browse;

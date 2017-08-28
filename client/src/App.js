@@ -14,6 +14,7 @@ import {
 } from 'react-router-dom'
 import './App.css'
 import Upload from './upload'
+import Browse from './browse'
 import Nav from './nav'
 
 const Banner = () => { 
@@ -71,6 +72,7 @@ class App extends Component {
             <Segment basic style={{marginTop: 0, padding: 0}}>
               <div>
                 <Route exact path="/" component={Home}/>
+                <Route path="/browse" component={Browse}/>
                 <Route path="/upload" component={Upload}/>
               </div>
             </Segment>
