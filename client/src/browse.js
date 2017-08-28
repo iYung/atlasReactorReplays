@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {
   Header,
   Segment,
-  Grid
+  Grid,
+  Input,
+  Table
 } from 'semantic-ui-react'
 
 class Browse extends Component {
@@ -16,21 +18,33 @@ class Browse extends Component {
             content='Browse Replays'
             style={{ fontSize: '3em', fontWeight: 'normal', textAlign: "center", paddingBottom: '.5em' }}
         />
+        <Input
+          action={{ color: 'blue', labelPosition: 'right', icon: 'search', content: 'Search' }}
+          placeholder='Enter a Trion Tag'
+        />
       </Segment>
-       <Segment style={{ padding: '8em 0em' }} vertical>
+       <Segment style={{ padding: '5em 0em' }} vertical>
           <Grid container stackable verticalAlign='middle'>
           <Grid.Row>
-              <Grid.Column width={8}>
-                <Header as='h3' style={{ fontSize: '2em' }}>Where Can I Find My Replays?</Header>
-                <p style={{ fontSize: '1.33em' }}>
-                  There should be a folder called "Live" within your installation of Atlas Reactor. Inside, there should be another folder called "Replays". All your replays will be in there as .arr files.
-                </p>
-                <Header as='h3' style={{ fontSize: '2em' }}>We Make Bananas That Can Dance</Header>
-                <p style={{ fontSize: '1.33em' }}>
-                  Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.
-                </p>
-              </Grid.Column>
-              <Grid.Column floated='right' width={6}>
+              <Grid.Column width={16}>
+              
+                <Table celled>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell>Header</Table.HeaderCell>
+                      <Table.HeaderCell>Header</Table.HeaderCell>
+                      <Table.HeaderCell>Header</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+                  <Table.Body>
+                    <Table.Row>
+                      <Table.Cell>Cell</Table.Cell>
+                      <Table.Cell>Cell</Table.Cell>
+                      <Table.Cell>Cell</Table.Cell>
+                    </Table.Row>
+                  </Table.Body>
+                </Table>
+                
               </Grid.Column>
             </Grid.Row>
           </Grid>
