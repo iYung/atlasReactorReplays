@@ -31,9 +31,9 @@ class Browse extends Component {
                 <Table celled>
                   <Table.Header>
                     <Table.Row>
-                      <Table.HeaderCell>Header</Table.HeaderCell>
-                      <Table.HeaderCell>Header</Table.HeaderCell>
-                      <Table.HeaderCell>Header</Table.HeaderCell>
+                      <Table.HeaderCell>Name</Table.HeaderCell>
+                      <Table.HeaderCell>Team 1</Table.HeaderCell>
+                      <Table.HeaderCell>Team 2</Table.HeaderCell>
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>

@@ -49,7 +49,7 @@ const Home = () => { return <div> <Segment inverted basic style={{ margin: 0,  t
                 </p>
                 <Header as='h3' style={{ fontSize: '2em' }}>How do you watch replays?</Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.
+                  Replays can be watched ingame with the chat command /playreplay followed by the name of the replay. The replay must be in the Replays folder.
                 </p>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>

@@ -50,10 +50,6 @@ class Upload extends Component {
                 <p style={{ fontSize: '1.33em' }}>
                   There should be a folder called "Live" within your installation of Atlas Reactor. Inside, there should be another folder called "Replays". All your replays will be in there as .arr files.
                 </p>
-                <Header as='h3' style={{ fontSize: '2em' }}>We Make Bananas That Can Dance</Header>
-                <p style={{ fontSize: '1.33em' }}>
-                  Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.
-                </p>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
               </Grid.Column>

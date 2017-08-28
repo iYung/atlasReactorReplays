@@ -1,0 +1,28 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "create-react-app": "^1.4.0",
+    "express": "^4.15.4",
+    "body-parser": "^1.17.2",
+    "mongoose": "^4.10.8"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iYung/atlasReactorReplays.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iYung/atlasReactorReplays/issues"
+  },
+  "homepage": "https://github.com/iYung/atlasReactorReplays#readme"
+}
