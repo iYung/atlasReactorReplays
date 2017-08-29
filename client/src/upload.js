@@ -4,7 +4,8 @@ import {
   Segment,
   Grid,
   Button,
-  Icon
+  Icon,
+  Image
 } from 'semantic-ui-react'
 
 class Upload extends Component {
@@ -52,6 +53,12 @@ class Upload extends Component {
                 </p>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
+                <Image
+                  bordered
+                  rounded
+                  size='large'
+                  src={require('./images/replaysFolder.png')}
+                />
               </Grid.Column>
             </Grid.Row>
           </Grid>

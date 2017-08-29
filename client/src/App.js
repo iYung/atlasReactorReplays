@@ -54,6 +54,12 @@ const Home = () => { return <div> <Segment inverted basic style={{ margin: 0,  t
                 </p>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
+                <Image
+                  bordered
+                  rounded
+                  size='large'
+                  src={require('./images/playReplay.png')}
+                />
               </Grid.Column>
             </Grid.Row>
           </Grid>
