@@ -16,6 +16,7 @@ import './App.css'
 import Upload from './upload'
 import Browse from './browse'
 import Nav from './nav'
+import Replay from './replay'
 
 const Banner = () => { 
   return <h1 style={{ color: 'white', fontSize: '4em', fontWeight: 'normal', paddingBottom: 0, textAlign: "center"}}>
@@ -74,6 +75,7 @@ class App extends Component {
                 <Route exact path="/" component={Home}/>
                 <Route path="/browse" component={Browse}/>
                 <Route path="/upload" component={Upload}/>
+                <Route path="/replay/:id" component={Replay}/>
               </div>
             </Segment>
           

@@ -21,6 +21,9 @@ class Nav extends Component {
                 <Link to="/upload">
                   <Menu.Item name='upload'/>
                 </Link>
+                <Link to="/replay/a">
+                  <Menu.Item name='replay'/>
+                </Link>
               </Menu>
             </Segment>
     );
