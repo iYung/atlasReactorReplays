@@ -24,10 +24,6 @@ class Replay extends Component {
     r.readAsText(f);
   }
   
-  replayButtonPress () {
-    document.getElementById("input").click();
-  }
-  
   render() {
     return (
       <div>
@@ -37,7 +33,7 @@ class Replay extends Component {
             content='Replay Title'
             style={{ fontSize: '3em', fontWeight: 'normal', textAlign: "center", paddingBottom: '.5em' }}
         />
-          <Button as='a' primary size='large'>
+          <Button as='a' primary size='large' download="file.arr" href={'data:text/plain;charset=utf-8,' + encodeURIComponent("HI")}>
           Download
           </Button>
       </Segment>
