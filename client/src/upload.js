@@ -53,11 +53,6 @@ class DefaultPage extends Component {
 
 class UploadForm extends Component {
   
-  copyToClipboard() {
-    document.getElementById("sharingLink").select();
-    document.execCommand('copy');
-  }
-  
   render() {
     return (
       <div>
@@ -155,11 +150,7 @@ class UploadForm extends Component {
               <Grid.Column width={6}>
                 <Header as='h3' style={{ fontSize: '2em' }}>Game Map</Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  Reactor_Deathmatch
-                </p>
-                <Header as='h3' style={{ fontSize: '2em' }}>Date Uploaded</Header>
-                <p style={{ fontSize: '1.33em' }}>
-                  May 5, 2017
+                  {this.props.map}
                 </p>
               </Grid.Column>
             </Grid.Row>
@@ -179,9 +170,13 @@ class Upload extends Component {
     var self = this;
     r.onload = function(e) {
       try {
-        var data = JSON.parse(JSON.parse(r.result)["m_teamInfo_Serialized"]);
-        alert(data["TeamPlayerInfo"]);
-        self.setState({fileChosen: true});
+        var mapData = JSON.parse(JSON.parse(r.result)["m_gameInfo_Serialized"])["GameConfig"]["Map"];
+        var playerData = JSON.parse(JSON.parse(r.result)["m_teamInfo_Serialized"])["TeamPlayerInfo"];
+        var team1 = []; var team2 = [];
+        for (var i = 0; i < 3; i++) {
+          var player = { handle: playerData[i]["Handle"] }
+        }
+        self.setState({fileChosen: true, map: mapData});
       } catch (error) {
         alert("Invalid file was uploaded!");
       }
@@ -202,7 +197,7 @@ class Upload extends Component {
   
   render() {
     if (this.state.fileChosen) {
-      return (<UploadForm />);
+      return (<UploadForm map={this.state.map}/>);
     } else {
       return (<DefaultPage onChange={this.onChange} uploadButtonPress={this.uploadButtonPress}/>);
     }
