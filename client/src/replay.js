@@ -5,23 +5,16 @@ import {
   Grid,
   Button,
   List,
-  Image
+  Image,
+  Input,
+  Label
 } from 'semantic-ui-react'
 
 class Replay extends Component {
   
-  onChange () {
-    var f = document.getElementById("input").files[0];
-    var r = new FileReader();
-    r.onload = function(e) {
-      try {
-        var data = JSON.parse(JSON.parse(r.result)["m_teamInfo_Serialized"]);
-        alert(data["TeamPlayerInfo"]);
-      } catch (error) {
-        alert("Invalid file was replayed!");
-      }
-    }
-    r.readAsText(f);
+  copyToClipboard() {
+    document.getElementById("sharingLink").select();
+    document.execCommand('copy');
   }
   
   render() {
@@ -129,6 +122,11 @@ class Replay extends Component {
                 <p style={{ fontSize: '1.33em' }}>
                   May 5, 2017
                 </p>
+                <Header as='h3' style={{ fontSize: '2em' }}>Sharing Link</Header>
+                <Input labelPosition='right' type='text' defaultValue={window.location.href} id="sharingLink">
+                  <input/>
+                  <Label as="a" color='blue' onClick={this.copyToClipboard}>Copy</Label>
+                </Input>
               </Grid.Column>
             </Grid.Row>
           </Grid>
