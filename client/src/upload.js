@@ -70,81 +70,29 @@ class UploadForm extends Component {
               <Grid.Column width={5}>
                 <Header as='h3' style={{ fontSize: '2em' }}>Team 1</Header>
                 <List>
+                  { this.props.team1.map((player) => (
                   <List.Item>
                     <Image avatar src={require('./images/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
-                      <List.Description>disasterPony#0214</List.Description>
+                      <List.Description>{player.handle}</List.Description>
                     </List.Content>
                   </List.Item>
-                  <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
-                    <List.Content>
-                      <List.Header>Blackburn</List.Header>
-                      <List.Description>disasterPony#0214</List.Description>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
-                    <List.Content>
-                      <List.Header>Blackburn</List.Header>
-                      <List.Description>disasterPony#0214</List.Description>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
-                    <List.Content>
-                      <List.Header>Blackburn</List.Header>
-                      <List.Description>disasterPony#0214</List.Description>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
-                    <List.Content>
-                      <List.Header>Blackburn</List.Header>
-                      <List.Description>disasterPony#0214</List.Description>
-                    </List.Content>
-                  </List.Item>
+                  ))}
                 </List>
               </Grid.Column>
               <Grid.Column width={5}>
                 <Header as='h3' style={{ fontSize: '2em' }}>Team 2</Header>
                 <List>
+                  { this.props.team2.map((player) => (
                   <List.Item>
                     <Image avatar src={require('./images/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
-                      <List.Description>disasterPony#0214</List.Description>
+                      <List.Description>{player.handle}</List.Description>
                     </List.Content>
                   </List.Item>
-                  <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
-                    <List.Content>
-                      <List.Header>Blackburn</List.Header>
-                      <List.Description>disasterPony#0214</List.Description>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
-                    <List.Content>
-                      <List.Header>Blackburn</List.Header>
-                      <List.Description>disasterPony#0214</List.Description>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
-                    <List.Content>
-                      <List.Header>Blackburn</List.Header>
-                      <List.Description>disasterPony#0214</List.Description>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
-                    <List.Content>
-                      <List.Header>Blackburn</List.Header>
-                      <List.Description>disasterPony#0214</List.Description>
-                    </List.Content>
-                  </List.Item>
+                  ))}
                 </List>
               </Grid.Column>
               <Grid.Column width={6}>
@@ -173,10 +121,16 @@ class Upload extends Component {
         var mapData = JSON.parse(JSON.parse(r.result)["m_gameInfo_Serialized"])["GameConfig"]["Map"];
         var playerData = JSON.parse(JSON.parse(r.result)["m_teamInfo_Serialized"])["TeamPlayerInfo"];
         var team1 = []; var team2 = [];
-        for (var i = 0; i < 3; i++) {
-          var player = { handle: playerData[i]["Handle"], char: playerData[i]["CharacterInfo"]["CharacterType"], team: playerData[i]["TeamId"]}
+        for (var i = 0; i < 8; i++) {
+          var team = playerData[i]["TeamId"];
+          var player = { handle: playerData[i]["Handle"], char: playerData[i]["CharacterInfo"]["CharacterType"], team: team};
+          if (team < 1) {
+            team1.push(player);
+          } else {
+            team2.push(player);
+          }
         }
-        self.setState({fileChosen: true, map: mapData});
+        self.setState({fileChosen: true, map: mapData, team1: team1, team2: team2});
       } catch (error) {
         alert("Invalid file was uploaded!");
       }
@@ -197,7 +151,7 @@ class Upload extends Component {
   
   render() {
     if (this.state.fileChosen) {
-      return (<UploadForm map={this.state.map}/>);
+      return (<UploadForm map={this.state.map} team1={this.state.team1} team2={this.state.team2}/>);
     } else {
       return (<DefaultPage onChange={this.onChange} uploadButtonPress={this.uploadButtonPress}/>);
     }
