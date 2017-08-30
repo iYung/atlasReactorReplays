@@ -13,13 +13,13 @@ class Nav extends Component {
             <Segment basic inverted style={{marginBottom: 0}}>
               <Menu inverted pointing secondary>
                 <Link to="/">
-                  <Menu.Item name='home' active={true}/>
+                  <Menu.Item name='home' active={this.props.page==="home"} onClick={this.props.handleItemClick}/>
                 </Link>
                 <Link to="/browse">
-                  <Menu.Item name='browse'/>
+                  <Menu.Item name='browse' active={this.props.page==="browse"} onClick={this.props.handleItemClick}/>
                 </Link>
                 <Link to="/upload">
-                  <Menu.Item name='upload'/>
+                  <Menu.Item name='upload' active={this.props.page==="upload"} onClick={this.props.handleItemClick}/>
                 </Link>
                 <Link to="/replay/a">
                   <Menu.Item name='replay'/>

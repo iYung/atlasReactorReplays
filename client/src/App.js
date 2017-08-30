@@ -23,7 +23,10 @@ const Banner = () => {
       <Image src={require('./images/logo.png')} style={{paddingBottom: '1.5em'}} inline size='tiny'/>R Replays
     </h1> }
 
-const Home = () => { return <div> <Segment inverted basic style={{ margin: 0,  textAlign: "center", paddingBottom: '2em' }}>
+class Home extends Component {
+
+render(){
+    return <div> <Segment inverted basic style={{ margin: 0,  textAlign: "center", paddingBottom: '2em' }}>
       
         <Banner/>
         <Header
@@ -32,7 +35,7 @@ const Home = () => { return <div> <Segment inverted basic style={{ margin: 0,  t
                 style={{ fontSize: '2em', fontWeight: 'normal', paddingBottom: '.5em', textAlign: "center"}}
               />
         <Link to="/upload">
-        <Button as='a' primary size='large'>
+        <Button as='a' primary size='large' name='upload' onClick={this.props.handleItemClick}>
           Upload a replay
           <Icon name='right arrow' />
         </Button>
@@ -65,20 +68,30 @@ const Home = () => { return <div> <Segment inverted basic style={{ margin: 0,  t
           </Grid>
         </Segment>
         
-      </div> }
+      </div> }}
 
 class App extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+        page: "home"
+    };
+  }
+  
+  handleItemClick = (e, { name }) => this.setState({ page: name })
+    
   render() {
     return (
       <div>
         <Router>
           <div>
         
-            <Nav/>
+            <Nav page={this.state.page} handleItemClick={this.handleItemClick}/>
             
             <Segment basic style={{marginTop: 0, padding: 0}}>
               <div>
-                <Route exact path="/" component={Home}/>
+                <Route exact path="/" render={()=>(<Home handleItemClick={this.handleItemClick}/>)}/>
                 <Route path="/browse" component={Browse}/>
                 <Route path="/upload" component={Upload}/>
                 <Route path="/replay/:id" component={Replay}/>
