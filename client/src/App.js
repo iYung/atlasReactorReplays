@@ -59,7 +59,7 @@ render(){
               <Grid.Column floated='right' width={6}>
                 <Image
                   bordered
-                  rounded
+                  shape="rounded"
                   size='large'
                   src={require('./images/playReplay.png')}
                 />
