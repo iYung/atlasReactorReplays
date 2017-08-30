@@ -174,7 +174,7 @@ class Upload extends Component {
         var playerData = JSON.parse(JSON.parse(r.result)["m_teamInfo_Serialized"])["TeamPlayerInfo"];
         var team1 = []; var team2 = [];
         for (var i = 0; i < 3; i++) {
-          var player = { handle: playerData[i]["Handle"] }
+          var player = { handle: playerData[i]["Handle"], char: playerData[i]["CharacterInfo"]["CharacterType"], team: playerData[i]["TeamId"]}
         }
         self.setState({fileChosen: true, map: mapData});
       } catch (error) {
