@@ -37,35 +37,35 @@ class Replay extends Component {
                 <Header as='h3' style={{ fontSize: '2em' }}>Team 1</Header>
                 <List>
                   <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
+                    <Image avatar src={require('./images/chars/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
                       <List.Description>disasterPony#0214</List.Description>
                     </List.Content>
                   </List.Item>
                   <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
+                    <Image avatar src={require('./images/chars/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
                       <List.Description>disasterPony#0214</List.Description>
                     </List.Content>
                   </List.Item>
                   <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
+                    <Image avatar src={require('./images/chars/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
                       <List.Description>disasterPony#0214</List.Description>
                     </List.Content>
                   </List.Item>
                   <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
+                    <Image avatar src={require('./images/chars/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
                       <List.Description>disasterPony#0214</List.Description>
                     </List.Content>
                   </List.Item>
                   <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
+                    <Image avatar src={require('./images/chars/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
                       <List.Description>disasterPony#0214</List.Description>
@@ -77,35 +77,35 @@ class Replay extends Component {
                 <Header as='h3' style={{ fontSize: '2em' }}>Team 2</Header>
                 <List>
                   <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
+                    <Image avatar src={require('./images/chars/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
                       <List.Description>disasterPony#0214</List.Description>
                     </List.Content>
                   </List.Item>
                   <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
+                    <Image avatar src={require('./images/chars/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
                       <List.Description>disasterPony#0214</List.Description>
                     </List.Content>
                   </List.Item>
                   <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
+                    <Image avatar src={require('./images/chars/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
                       <List.Description>disasterPony#0214</List.Description>
                     </List.Content>
                   </List.Item>
                   <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
+                    <Image avatar src={require('./images/chars/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
                       <List.Description>disasterPony#0214</List.Description>
                     </List.Content>
                   </List.Item>
                   <List.Item>
-                    <Image avatar src={require('./images/blackburn.png')} />
+                    <Image avatar src={require('./images/chars/blackburn.png')} />
                     <List.Content>
                       <List.Header>Blackburn</List.Header>
                       <List.Description>disasterPony#0214</List.Description>
