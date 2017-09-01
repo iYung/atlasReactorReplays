@@ -7,7 +7,8 @@ import {
   Icon,
   Image,
   List,
-  Input
+  Input,
+  Label
 } from 'semantic-ui-react'
 
 class DefaultPage extends Component {
@@ -96,7 +97,9 @@ class UploadForm extends Component {
     return (
       <div>
       <Segment inverted basic style={{ margin: "0 auto",  textAlign: "center", paddingBottom: '2em' }}>
-        <Input type='text' placeholder="Name your replay here" id="replayName" style={{ fontSize: '3em', fontWeight: 'normal', textAlign: "center", paddingBottom: '.5em' }}>
+        <Input labelPosition='right' type='text' placeholder="Name your replay here" id="replayName" style={{ fontSize: '3em', fontWeight: 'normal', textAlign: "center", paddingBottom: '.5em' }}>
+          <input/>
+          <Label>.arr</Label>
         </Input>
         <br/>
         <Button as='a' primary size='large' download="file.arr" href={'data:text/plain;charset=utf-8,' + encodeURIComponent("HI")}>
