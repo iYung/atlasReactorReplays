@@ -85,6 +85,10 @@ class UploadForm extends Component {
       33:["Meridian","meridian"],
       34:["Nev3","nev3"]
     }
+    if (char > charArray.length) {
+      var errorArray = ["Error fetching character", "error"];
+      return errorArray[img];
+    }
     return charArray[char][img];
   }
   
