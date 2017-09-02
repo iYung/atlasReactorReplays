@@ -4,7 +4,9 @@ import {
   Segment,
   Grid,
   Input,
-  Table
+  Table,
+  Popup,
+  Image
 } from 'semantic-ui-react'
 
 class Browse extends Component {
@@ -31,16 +33,70 @@ class Browse extends Component {
                 <Table celled>
                   <Table.Header>
                     <Table.Row>
-                      <Table.HeaderCell>Name</Table.HeaderCell>
+                      <Table.HeaderCell>Replay Name</Table.HeaderCell>
                       <Table.HeaderCell>Team 1</Table.HeaderCell>
                       <Table.HeaderCell>Team 2</Table.HeaderCell>
+                      <Table.HeaderCell>Map</Table.HeaderCell>
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>
                     <Table.Row>
-                      <Table.Cell>Cell</Table.Cell>
-                      <Table.Cell>Cell</Table.Cell>
-                      <Table.Cell>Cell</Table.Cell>
+                      <Table.Cell>FileName</Table.Cell>
+                      <Table.Cell>
+                        <Popup key={"Blackburn"} 
+                          trigger={<Image src={require('./images/chars/blackburn.png')} avatar />} 
+                          header={"disasterPony#8909"} 
+                          content={"Blackburn"} 
+                        />
+                        <Popup key={"Aurora"} 
+                          trigger={<Image src={require('./images/chars/aurora.png')} avatar />} 
+                          header={"disasterPony#8909"} 
+                          content={"Aurora"} 
+                        />
+                        <Popup key={"Zuki"} 
+                          trigger={<Image src={require('./images/chars/zuki.png')} avatar />} 
+                          header={"disasterPony#8909"} 
+                          content={"Zuki"} 
+                        />
+                        <Popup key={"Quark"} 
+                          trigger={<Image src={require('./images/chars/quark.png')} avatar />} 
+                          header={"disasterPony#8909"} 
+                          content={"Quark"} 
+                        />
+                        <Popup key={"Titus"} 
+                          trigger={<Image src={require('./images/chars/titus.png')} avatar />} 
+                          header={"disasterPony#8909"} 
+                          content={"Titus"} 
+                        />
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Popup key={"Blackburn"} 
+                          trigger={<Image src={require('./images/chars/blackburn.png')} avatar />} 
+                          header={"disasterPony#8909"} 
+                          content={"Blackburn"} 
+                        />
+                        <Popup key={"Aurora"} 
+                          trigger={<Image src={require('./images/chars/aurora.png')} avatar />} 
+                          header={"disasterPony#8909"} 
+                          content={"Aurora"} 
+                        />
+                        <Popup key={"Zuki"} 
+                          trigger={<Image src={require('./images/chars/zuki.png')} avatar />} 
+                          header={"disasterPony#8909"} 
+                          content={"Zuki"} 
+                        />
+                        <Popup key={"Quark"} 
+                          trigger={<Image src={require('./images/chars/quark.png')} avatar />} 
+                          header={"disasterPony#8909"} 
+                          content={"Quark"} 
+                        />
+                        <Popup key={"Titus"} 
+                          trigger={<Image src={require('./images/chars/titus.png')} avatar />} 
+                          header={"disasterPony#8909"} 
+                          content={"Titus"} 
+                        />
+                      </Table.Cell>
+                      <Table.Cell>Reactor_Deathmatch</Table.Cell>
                     </Table.Row>
                   </Table.Body>
                 </Table>
