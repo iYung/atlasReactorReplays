@@ -9,6 +9,7 @@
     "react-scripts": "1.0.11",
     "semantic-ui-react": "^0.71.5"
   },
+  "proxy": "http://localhost:3000/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

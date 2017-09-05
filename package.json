@@ -13,6 +13,7 @@
     "concurrently": "^3.5.0"
   },
   "scripts": {
+    "start": "concurrently \"node server.js\" \"cd client && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
