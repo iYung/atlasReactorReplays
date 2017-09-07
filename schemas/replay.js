@@ -11,7 +11,6 @@ var ReplaySchema   = new Schema({
     name: String,
     time : { type : Date, default: Date.now, expires: 60*60*24*30 },
     map: String,
-    link: String,
     players: [PlayerSchema]
 });
 

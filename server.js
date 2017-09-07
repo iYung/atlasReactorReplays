@@ -43,11 +43,44 @@ router.route('/replay')
         }).limit(15);
     })
     .post(function(req, res) {
+        if (!(req.body.name && req.body.map && req.body.players)) {
+            return res.json({ error: "Missing at least one argument!", success: false });
+        }
+        Replay.findOne({
+            name: req.body.name
+        },function(err, oldReplay) {
+            if (err)
+                return res.json({ error: "Error occured!", success: false });
+            if (replay != null) {
+                return res.json({ error: "File with this name already exists!", success: false });
+            } else {
+                var replay = new Replay();
+                replay.name = req.body.name;
+                replay.map = req.body.map;
+                replay.players = req.body.players;
+                replay.save(function(err) {
+                if (err)
+                    return res.json({ error: err, success: false });
+                return res.json({ success: true });
+                });
+            }
+        });
     });
     
 //get replay
 router.route('/replay/:name')
     .get(function(req, res) {
+        Replay.findOne({
+            name: req.params.name
+        },function(err, replay) {
+            if (err)
+                return res.json({ error: "Error occured!", success: false });
+            if (replay == null) {
+                return res.json({ error: "Replay not found!", success: false });
+            } else {
+                return res.json(replay);
+            }
+        });
     });
 
 //use router
