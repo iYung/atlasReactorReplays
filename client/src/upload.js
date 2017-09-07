@@ -10,6 +10,8 @@ import {
   Input,
   Label
 } from 'semantic-ui-react'
+import Axios from 'axios';
+import Qs from 'qs';
 
 class DefaultPage extends Component {
   render() {
@@ -56,7 +58,8 @@ class UploadForm extends Component {
   
   //char is char number, img (0/1) dictates to get image name of char name
   getCharName(char, img){
-    var charArray = {1:["Asana","asana"],
+    var charArray = {
+      1:["Asana","asana"],
       2:["Zuki","zuki"],
       3:["Aurora","aurora"],
       4:["Gremolitions Inc","gremolitionsinc"],
@@ -93,6 +96,26 @@ class UploadForm extends Component {
     return charArray[char][img];
   }
   
+  //upload file
+  upload = () => {
+    const players = this.props.team1.concat(this.props.team2);
+    const name = document.getElementById("replayName").value;
+    if (!name || name === "") {
+      alert("Please enter a value.");
+    } else if (/^[a-z0-9]*$/.test(name) === false) {
+      alert("Please enter a name with only lower case letters.");
+    } else {
+      Axios.post('/api/replay/', Qs.stringify({ 'map': this.props.map, 'name': name, 'players': players }))
+        .then(res => {
+          if (res.data.success) {
+          } else {
+            alert (res.data.error);
+          }
+          
+        });
+    }
+  }
+  
   render() {
     return (
       <div>
@@ -102,7 +125,7 @@ class UploadForm extends Component {
           <Label>.arr</Label>
         </Input>
         <br/>
-        <Button as='a' primary size='large' download="file.arr" href={'data:text/plain;charset=utf-8,' + encodeURIComponent("HI")}>
+        <Button as='a' primary size='large' onClick={this.upload} >
         Upload Replay
         </Button>
       </Segment>
