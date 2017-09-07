@@ -108,10 +108,10 @@ class UploadForm extends Component {
       Axios.post('/api/replay/', Qs.stringify({ 'map': this.props.map, 'name': name, 'players': players }))
         .then(res => {
           if (res.data.success) {
+            
           } else {
             alert (res.data.error);
           }
-          
         });
     }
   }

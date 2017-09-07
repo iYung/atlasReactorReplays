@@ -51,7 +51,7 @@ router.route('/replay')
         },function(err, oldReplay) {
             if (err)
                 return res.json({ error: "Error occured!", success: false });
-            if (replay != null) {
+            if (oldReplay != null) {
                 return res.json({ error: "File with this name already exists!", success: false });
             } else {
                 var replay = new Replay();
