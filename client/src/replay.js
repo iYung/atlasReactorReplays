@@ -59,7 +59,8 @@ class Replay extends Component {
       28:["Khita","khita"],
       31:["Tol-Ren","tolren"],
       33:["Meridian","meridian"],
-      34:["Nev3","nev3"]
+      34:["Nev3","nev3"],
+      35:["Isadora","isadora"]
     }
     if (char > charArray.length) {
       var errorArray = ["Error fetching character", "error"];
@@ -78,7 +79,7 @@ class Replay extends Component {
             const d = date.toDateString()
             self.setState({name: res.data.name, players: res.data.players, map: res.data.map, date: d });
           } else {
-            alert (res.data.success);
+            alert (res.data.error);
             window.location.replace('/upload');
           }
         });
@@ -102,7 +103,7 @@ class Replay extends Component {
       <Segment inverted basic style={{ margin: "0 auto",  textAlign: "center", paddingBottom: '2em' }}>
         <Header
             as='h1' inverted
-            content='Replay Title'
+            content={this.state.name+'.arr'}
             style={{ fontSize: '3em', fontWeight: 'normal', textAlign: "center", paddingBottom: '.5em' }}
         />
           <Button as='a' primary size='large' download="file.arr" href={'data:text/plain;charset=utf-8,' + encodeURIComponent("HI")}>

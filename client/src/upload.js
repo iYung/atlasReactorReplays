@@ -87,7 +87,8 @@ class UploadForm extends Component {
       28:["Khita","khita"],
       31:["Tol-Ren","tolren"],
       33:["Meridian","meridian"],
-      34:["Nev3","nev3"]
+      34:["Nev3","nev3"],
+      35:["Isadora","isadora"]
     }
     if (char > charArray.length) {
       var errorArray = ["Error fetching character", "error"];
