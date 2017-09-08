@@ -108,7 +108,8 @@ class UploadForm extends Component {
       Axios.post('/api/replay/', Qs.stringify({ 'map': this.props.map, 'name': name, 'players': players }))
         .then(res => {
           if (res.data.success) {
-            
+            alert(res.data.message);
+            window.location.replace('/replay/' + name);
           } else {
             alert (res.data.error);
           }
@@ -210,7 +211,8 @@ class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        fileChosen: false
+        fileChosen: false,
+        upload: false
     };
   }
   

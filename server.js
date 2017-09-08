@@ -61,7 +61,7 @@ router.route('/replay')
                 replay.save(function(err) {
                 if (err)
                     return res.json({ error: err, success: false });
-                return res.json({ success: true });
+                return res.json({ success: true, message: replay.name + " uploaded successfully!" });
                 });
             }
         });
@@ -78,7 +78,9 @@ router.route('/replay/:name')
             if (replay == null) {
                 return res.json({ error: "Replay not found!", success: false });
             } else {
-                return res.json(replay);
+                var r = replay.toObject();
+                r.success = true;
+                return res.json(r);
             }
         });
     });
