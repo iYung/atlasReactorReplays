@@ -65,7 +65,17 @@ router.route('/replay')
                 });
             }
         });
+    })
+    .delete(function(req, res) {
+        Replay.remove({
+            __v: 0
+        }, function(err, replays) {
+            if (err)
+                return res.send(err);
+            return res.json({ message: 'Successfully deleted replays!'});
+        });
     });
+    
     
 //get replay
 router.route('/replay/:name')
