@@ -94,6 +94,23 @@ router.route('/replay/:name')
             }
         });
     });
+    
+//search replay
+router.route('/search/:name')
+    .get(function(req, res) {
+        Replay.find({
+            players:{$elemMatch:{handle: decodeURI(req.params.name)}}
+        },function(err, replay) {
+            if (err)
+                return res.json({ error: "Error occured!", success: false });
+            if (replay == null) {
+                return res.json({ error: "Replay not found!", success: false });
+            } else {
+                console.log(decodeURI(req.params.name));
+                return res.json(replay);
+            }
+        });
+    });
 
 //use router
 app.use('/api', router);

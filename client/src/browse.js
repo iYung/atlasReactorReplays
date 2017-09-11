@@ -64,6 +64,15 @@ class Browse extends Component {
     window.location.replace('/replay/'+name);
   }
   
+  search = () => {
+    const self = this;
+    const namesearch = document.getElementById("searchInput").value;
+    Axios.get('/api/search/' + encodeURIComponent(namesearch))
+        .then(res => {
+          self.setState({replays: res.data});
+        });
+  }
+  
   componentWillMount() {
     const self = this;
     Axios.get('/api/replay/')
@@ -81,8 +90,8 @@ class Browse extends Component {
             content='Browse Replays'
             style={{ fontSize: '3em', fontWeight: 'normal', textAlign: "center", paddingBottom: '.5em' }}
         />
-        <Input
-          action={{ color: 'blue', labelPosition: 'right', icon: 'search', content: 'Search' }}
+        <Input id="searchInput"
+          action={{ color: 'blue', labelPosition: 'right', icon: 'search', content: 'Search', onClick: this.search }}
           placeholder='Enter a Trion Tag'
         />
       </Segment>
