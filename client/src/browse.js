@@ -118,7 +118,7 @@ class Browse extends Component {
                       const d = date.toDateString()
                       
                       return (
-                    <Table.Row onClick={() => this.goToReplay(replay.name)}>
+                    <Table.Row key ={replay.name} onClick={() => this.goToReplay(replay.name)}>
                       <Table.Cell>{replay.name}</Table.Cell>
                       <Table.Cell>
                       { team1.map((player) => (

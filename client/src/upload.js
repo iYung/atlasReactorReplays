@@ -12,6 +12,7 @@ import {
 } from 'semantic-ui-react'
 import Axios from 'axios';
 import Qs from 'qs';
+import AWS from 'aws-sdk'
 
 class DefaultPage extends Component {
   render() {
@@ -99,6 +100,7 @@ class UploadForm extends Component {
   
   //upload file
   upload = () => {
+    const self = this;
     const players = this.props.team1.concat(this.props.team2);
     const name = document.getElementById("replayName").value;
     if (!name || name === "") {
@@ -109,8 +111,30 @@ class UploadForm extends Component {
       Axios.post('/api/replay/', Qs.stringify({ 'map': this.props.map, 'name': name, 'players': players }))
         .then(res => {
           if (res.data.success) {
-            alert(res.data.message);
-            window.location.replace('/replay/' + name);
+            var albumBucketName = 'arreplays';
+            var bucketRegion = 'us-west-2';
+            var IdentityPoolId = 'us-west-2:2d1a6687-bf4b-4193-8c7d-e5af76dfea22';
+            AWS.config.update({
+              region: bucketRegion,
+              credentials: new AWS.CognitoIdentityCredentials({
+                IdentityPoolId: IdentityPoolId
+              })
+            });
+            var s3 = new AWS.S3({
+              apiVersion: '2006-03-01',
+              params: {Bucket: albumBucketName}
+            });
+            s3.upload({
+              Key: name +'.arr',
+              Body: self.props.file,
+              ACL: 'public-read'
+            }, function(err, data) {
+              if (err) {
+                return alert('There was an error uploading your photo: ', err.message);
+              }
+              alert(res.data.message);
+              window.location.replace('/replay/' + name);
+            });
           } else {
             alert (res.data.error);
           }
@@ -138,7 +162,7 @@ class UploadForm extends Component {
                 <Header as='h3' style={{ fontSize: '2em' }}>Team 1</Header>
                 <List>
                   { this.props.team1.map((player) => (
-                  <List.Item>
+                  <List.Item key={this.getCharName(player.char,1) + "_" + player.handle}>
                     <Image avatar src={require('./images/chars/'+this.getCharName(player.char,1)+'.png')} />
                     <List.Content>
                       <List.Header>{this.getCharName(player.char,0)}</List.Header>
@@ -152,7 +176,7 @@ class UploadForm extends Component {
                 <Header as='h3' style={{ fontSize: '2em' }}>Team 2</Header>
                 <List>
                   { this.props.team2.map((player) => (
-                  <List.Item>
+                  <List.Item key={this.getCharName(player.char,1) + "_" + player.handle}>
                     <Image avatar src={require('./images/chars/'+this.getCharName(player.char,1)+'.png')} />
                     <List.Content>
                       <List.Header>{this.getCharName(player.char,0)}</List.Header>
@@ -197,7 +221,7 @@ class Upload extends Component {
             team2.push(player);
           }
         }
-        self.setState({fileChosen: true, map: mapData, team1: team1, team2: team2});
+        self.setState({fileChosen: true, map: mapData, team1: team1, team2: team2, file: f});
       } catch (error) {
         alert("Invalid file was uploaded!");
       }
@@ -219,7 +243,7 @@ class Upload extends Component {
   
   render() {
     if (this.state.fileChosen) {
-      return (<UploadForm map={this.state.map} team1={this.state.team1} team2={this.state.team2}/>);
+      return (<UploadForm map={this.state.map} team1={this.state.team1} team2={this.state.team2} file={this.state.file}/>);
     } else {
       return (<DefaultPage onChange={this.onChange} uploadButtonPress={this.uploadButtonPress}/>);
     }

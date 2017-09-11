@@ -106,7 +106,7 @@ class Replay extends Component {
             content={this.state.name+'.arr'}
             style={{ fontSize: '3em', fontWeight: 'normal', textAlign: "center", paddingBottom: '.5em' }}
         />
-          <Button as='a' primary size='large' download="file.arr" href={'data:text/plain;charset=utf-8,' + encodeURIComponent("HI")}>
+          <Button as='a' primary size='large' href={'https://s3-us-west-2.amazonaws.com/arreplays/' + this.state.name + '.arr'}>
           Download
           </Button>
       </Segment>
@@ -117,7 +117,7 @@ class Replay extends Component {
                 <Header as='h3' style={{ fontSize: '2em' }}>Team 1</Header>
                 <List>
                 { team1.map((player) => (
-                  <List.Item>
+                  <List.Item key={this.getCharName(player.char,1) + "_" + player.handle}>
                     <Image avatar src={require('./images/chars/'+this.getCharName(player.char,1)+'.png')} />
                     <List.Content>
                       <List.Header>{this.getCharName(player.char,0)}</List.Header>
@@ -131,7 +131,7 @@ class Replay extends Component {
                 <Header as='h3' style={{ fontSize: '2em' }}>Team 2</Header>
                 <List>
                 { team2.map((player) => (
-                  <List.Item>
+                  <List.Item key={this.getCharName(player.char,1) + "_" + player.handle}>
                     <Image avatar src={require('./images/chars/'+this.getCharName(player.char,1)+'.png')} />
                     <List.Content>
                       <List.Header>{this.getCharName(player.char,0)}</List.Header>

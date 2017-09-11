@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-sdk": "^2.112.0",
     "axios": "^0.16.2",
     "qs": "^6.5.0",
     "react": "^15.6.1",
