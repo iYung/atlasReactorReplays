@@ -7,7 +7,8 @@ import {
   List,
   Image,
   Input,
-  Label
+  Label,
+  Popup
 } from 'semantic-ui-react'
 import Axios from 'axios';
 
@@ -110,10 +111,16 @@ class Replay extends Component {
                   {this.state.date}
                 </p>
                 <Header as='h3' style={{ fontSize: '2em' }}>Sharing Link</Header>
-                <Input labelPosition='right' type='text' defaultValue={window.location.href} id="sharingLink">
-                  <input/>
-                  <Label as="a" color='blue' onClick={this.copyToClipboard}>Copy</Label>
-                </Input>
+                    <Input labelPosition='right' type='text' defaultValue={window.location.href} id="sharingLink">
+                      <input/>
+                      <Popup trigger={
+                        <Label as="a" color='blue' onClick={this.copyToClipboard}>Copy</Label>
+                      }
+                      position="top center"
+                      on='click'
+                      content={"Copied!"} 
+                    />
+                    </Input>
               </Grid.Column>
             </Grid.Row>
           </Grid>
