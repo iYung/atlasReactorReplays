@@ -8,7 +8,8 @@ import {
   Image,
   List,
   Input,
-  Label
+  Label,
+  Modal
 } from 'semantic-ui-react'
 import Axios from 'axios';
 import Qs from 'qs';
@@ -57,6 +58,13 @@ class DefaultPage extends Component {
 
 class UploadForm extends Component {
   
+  constructor(props) {
+    super(props);
+    this.state = {
+        uploading: false
+    };
+  }
+  
   //upload file
   upload = () => {
     const self = this;
@@ -67,6 +75,7 @@ class UploadForm extends Component {
     } else if (/^[a-z0-9]*$/.test(name) === false) {
       alert("Please enter a name with only lower case letters.");
     } else {
+      self.setState({uploading: true});
       Axios.post('/api/replay/', Qs.stringify({ 'map': this.props.map, 'name': name, 'players': players }))
         .then(res => {
           if (res.data.success) {
@@ -89,13 +98,16 @@ class UploadForm extends Component {
               ACL: 'public-read'
             }, function(err, data) {
               if (err) {
-                return alert('There was an error uploading your photo: ', err.message);
+                alert('There was an error uploading your replay:', err.message);
+                self.setState({uploading: false});
+                return;
               }
               alert(res.data.message);
               window.location.replace('/replay/' + name);
             });
           } else {
             alert (res.data.error);
+            self.setState({uploading: false});
           }
         });
     }
@@ -104,6 +116,11 @@ class UploadForm extends Component {
   render() {
     return (
       <div>
+      <Modal open={this.state.uploading} size='mini'>
+        <Modal.Content style={{"text-align": "center"}}>
+          <p>Uploading replay...</p>
+        </Modal.Content>
+      </Modal>
       <Segment inverted basic style={{ margin: "0 auto",  textAlign: "center", paddingBottom: '2em' }}>
         <Input labelPosition='right' type='text' placeholder="Name your replay here" id="replayName" style={{ fontSize: '3em', fontWeight: 'normal', textAlign: "center", paddingBottom: '.5em' }}>
           <input/>
