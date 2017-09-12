@@ -57,47 +57,6 @@ class DefaultPage extends Component {
 
 class UploadForm extends Component {
   
-  //char is char number, img (0/1) dictates to get image name of char name
-  getCharName(char, img){
-    var charArray = {
-      1:["Asana","asana"],
-      2:["Zuki","zuki"],
-      3:["Aurora","aurora"],
-      4:["Gremolitions Inc","gremolitionsinc"],
-      5:["Helio","helio"],
-      6:["Rask","rask"],
-      7:["PuP","pup"],
-      8:["Lockwood","lockwood"],
-      9:["Nix","nix"],
-      10:["Garrison","garrison"],
-      11:["Quark","quark"],
-      12:["Kaigin","kaigin"],
-      13:["Celeste","celeste"],
-      14:["Grey","grey"],
-      15:["Oz","oz"],
-      17:["Rampart","rampart"],
-      18:["Titus","titus"],
-      19:["Elle","elle"],
-      20:["Dr. Finn","drfinn"],
-      21:["Juno","juno"],
-      22:["Blackburn","blackburn"],
-      23:["Orion","orion"],
-      24:["Su-Ren","suren"],
-      26:["Phaedra","phaedra"],
-      27:["Brynn","brynn"],
-      28:["Khita","khita"],
-      31:["Tol-Ren","tolren"],
-      33:["Meridian","meridian"],
-      34:["Nev3","nev3"],
-      35:["Isadora","isadora"]
-    }
-    if (char > charArray.length) {
-      var errorArray = ["Error fetching character", "error"];
-      return errorArray[img];
-    }
-    return charArray[char][img];
-  }
-  
   //upload file
   upload = () => {
     const self = this;
@@ -162,10 +121,10 @@ class UploadForm extends Component {
                 <Header as='h3' style={{ fontSize: '2em' }}>Team 1</Header>
                 <List>
                   { this.props.team1.map((player) => (
-                  <List.Item key={this.getCharName(player.char,1) + "_" + player.handle}>
-                    <Image avatar src={require('./images/chars/'+this.getCharName(player.char,1)+'.png')} />
+                  <List.Item key={this.props.getCharName(player.char,1) + "_" + player.handle}>
+                    <Image avatar src={require('./images/chars/'+this.props.getCharName(player.char,1)+'.png')} />
                     <List.Content>
-                      <List.Header>{this.getCharName(player.char,0)}</List.Header>
+                      <List.Header>{this.props.getCharName(player.char,0)}</List.Header>
                       <List.Description>{player.handle}</List.Description>
                     </List.Content>
                   </List.Item>
@@ -176,10 +135,10 @@ class UploadForm extends Component {
                 <Header as='h3' style={{ fontSize: '2em' }}>Team 2</Header>
                 <List>
                   { this.props.team2.map((player) => (
-                  <List.Item key={this.getCharName(player.char,1) + "_" + player.handle}>
-                    <Image avatar src={require('./images/chars/'+this.getCharName(player.char,1)+'.png')} />
+                  <List.Item key={this.props.getCharName(player.char,1) + "_" + player.handle}>
+                    <Image avatar src={require('./images/chars/'+this.props.getCharName(player.char,1)+'.png')} />
                     <List.Content>
-                      <List.Header>{this.getCharName(player.char,0)}</List.Header>
+                      <List.Header>{this.props.getCharName(player.char,0)}</List.Header>
                       <List.Description>{player.handle}</List.Description>
                     </List.Content>
                   </List.Item>
@@ -243,7 +202,7 @@ class Upload extends Component {
   
   render() {
     if (this.state.fileChosen) {
-      return (<UploadForm map={this.state.map} team1={this.state.team1} team2={this.state.team2} file={this.state.file}/>);
+      return (<UploadForm map={this.state.map} team1={this.state.team1} team2={this.state.team2} file={this.state.file} getCharName={this.props.getCharName}/>);
     } else {
       return (<DefaultPage onChange={this.onChange} uploadButtonPress={this.uploadButtonPress}/>);
     }

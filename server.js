@@ -106,7 +106,6 @@ router.route('/search/:name')
             if (replay == null) {
                 return res.json({ error: "Replay not found!", success: false });
             } else {
-                console.log(decodeURI(req.params.name));
                 return res.json(replay);
             }
         });

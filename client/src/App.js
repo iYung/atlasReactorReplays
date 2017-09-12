@@ -49,7 +49,7 @@ render(){
               <Grid.Column width={8}>
                 <Header as='h3' style={{ fontSize: '2em' }}>Welcome to AR Replays</Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  There should be a folder called "Live" within your installation of Atlas Reactor. Inside, there should be another folder called "Replays". All your replays will be in there as .arr files.
+                  AR Replays is a replay sharing website for Atlas Reactor. Anyone can upload their Atlas Reactor replays to share with friends and family. Replays will be stored for 30 days.
                 </p>
                 <Header as='h3' style={{ fontSize: '2em' }}>How do you watch replays?</Header>
                 <p style={{ fontSize: '1.33em' }}>
@@ -80,6 +80,46 @@ class App extends Component {
   }
   
   handleItemClick = (e, { name }) => this.setState({ page: name })
+  
+  getCharName(char, img){
+    var charArray = {
+      1:["Asana","asana"],
+      2:["Zuki","zuki"],
+      3:["Aurora","aurora"],
+      4:["Gremolitions Inc","gremolitionsinc"],
+      5:["Helio","helio"],
+      6:["Rask","rask"],
+      7:["PuP","pup"],
+      8:["Lockwood","lockwood"],
+      9:["Nix","nix"],
+      10:["Garrison","garrison"],
+      11:["Quark","quark"],
+      12:["Kaigin","kaigin"],
+      13:["Celeste","celeste"],
+      14:["Grey","grey"],
+      15:["Oz","oz"],
+      17:["Rampart","rampart"],
+      18:["Titus","titus"],
+      19:["Elle","elle"],
+      20:["Dr. Finn","drfinn"],
+      21:["Juno","juno"],
+      22:["Blackburn","blackburn"],
+      23:["Orion","orion"],
+      24:["Su-Ren","suren"],
+      26:["Phaedra","phaedra"],
+      27:["Brynn","brynn"],
+      28:["Khita","khita"],
+      31:["Tol-Ren","tolren"],
+      33:["Meridian","meridian"],
+      34:["Nev3","nev3"],
+      35:["Isadora","isadora"]
+    }
+    if (char > charArray.length) {
+      var errorArray = ["Error fetching character", "error"];
+      return errorArray[img];
+    }
+    return charArray[char][img];
+  }
     
   render() {
     return (
@@ -92,9 +132,9 @@ class App extends Component {
             <Segment basic style={{marginTop: 0, padding: 0}}>
               <div>
                 <Route exact path="/" render={()=>(<Home handleItemClick={this.handleItemClick}/>)}/>
-                <Route path="/browse" component={Browse}/>
-                <Route path="/upload" component={Upload}/>
-                <Route path="/replay/:id" component={Replay}/>
+                <Route path="/browse" render={()=>(<Browse getCharName={this.getCharName}/>)}/>
+                <Route path="/upload" render={()=>(<Upload getCharName={this.getCharName}/>)}/>
+                <Route path="/replay/:id" render={()=>(<Replay getCharName={this.getCharName}/>)}/>
               </div>
             </Segment>
           

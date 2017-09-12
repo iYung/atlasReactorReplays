@@ -19,47 +19,6 @@ class Browse extends Component {
     };
   }
   
-  //char is char number, img (0/1) dictates to get image name of char name
-  getCharName(char, img){
-    var charArray = {
-      1:["Asana","asana"],
-      2:["Zuki","zuki"],
-      3:["Aurora","aurora"],
-      4:["Gremolitions Inc","gremolitionsinc"],
-      5:["Helio","helio"],
-      6:["Rask","rask"],
-      7:["PuP","pup"],
-      8:["Lockwood","lockwood"],
-      9:["Nix","nix"],
-      10:["Garrison","garrison"],
-      11:["Quark","quark"],
-      12:["Kaigin","kaigin"],
-      13:["Celeste","celeste"],
-      14:["Grey","grey"],
-      15:["Oz","oz"],
-      17:["Rampart","rampart"],
-      18:["Titus","titus"],
-      19:["Elle","elle"],
-      20:["Dr. Finn","drfinn"],
-      21:["Juno","juno"],
-      22:["Blackburn","blackburn"],
-      23:["Orion","orion"],
-      24:["Su-Ren","suren"],
-      26:["Phaedra","phaedra"],
-      27:["Brynn","brynn"],
-      28:["Khita","khita"],
-      31:["Tol-Ren","tolren"],
-      33:["Meridian","meridian"],
-      34:["Nev3","nev3"],
-      35:["Isadora","isadora"]
-    }
-    if (char > charArray.length) {
-      var errorArray = ["Error fetching character", "error"];
-      return errorArray[img];
-    }
-    return charArray[char][img];
-  }
-  
   goToReplay(name){
     window.location.replace('/replay/'+name);
   }
@@ -131,19 +90,19 @@ class Browse extends Component {
                       <Table.Cell>{replay.name}</Table.Cell>
                       <Table.Cell>
                       { team1.map((player) => (
-                        <Popup key={this.getCharName(player.char,0)+player.handle} 
-                          trigger={<Image avatar src={require('./images/chars/'+this.getCharName(player.char,1)+'.png')} />}
+                        <Popup key={this.props.getCharName(player.char,0)+player.handle} 
+                          trigger={<Image avatar src={require('./images/chars/'+this.props.getCharName(player.char,1)+'.png')} />}
                           header={player.handle} 
-                          content={this.getCharName(player.char,0)} 
+                          content={this.props.getCharName(player.char,0)} 
                         />
                       ))}
                       </Table.Cell>
                       <Table.Cell>
                         { team2.map((player) => (
-                        <Popup key={this.getCharName(player.char,0)+player.handle} 
-                          trigger={<Image avatar src={require('./images/chars/'+this.getCharName(player.char,1)+'.png')} />}
+                        <Popup key={this.props.getCharName(player.char,0)+player.handle} 
+                          trigger={<Image avatar src={require('./images/chars/'+this.props.getCharName(player.char,1)+'.png')} />}
                           header={player.handle} 
-                          content={this.getCharName(player.char,0)} 
+                          content={this.props.getCharName(player.char,0)} 
                         />
                       ))}
                       </Table.Cell>
