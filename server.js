@@ -13,9 +13,11 @@ mongoose.connect(config.database,{useMongoClient: true});
 //port setup
 var port;
 if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+    app.use('/replay/*',express.static('client/build'));
     port = process.env.PORT || config.serverPort;
 } else {
-    port = config.serverPort;
+    port = 3000;
 }
 
 //allow CORS
