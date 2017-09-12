@@ -69,13 +69,16 @@ router.route('/replay')
         });
     })
     .delete(function(req, res) {
-        Replay.remove({
-            __v: 0
-        }, function(err, replays) {
-            if (err)
-                return res.send(err);
-            return res.json({ message: 'Successfully deleted replays!'});
-        });
+        if (req.body.password == config.password){
+            Replay.remove({
+                __v: 0
+            }, function(err, replays) {
+                if (err)
+                    return res.send(err);
+                return res.json({ message: 'Successfully deleted replays!'});
+            });
+        } 
+        return res.json({ message: 'Incorrect password!'});
     });
     
     
