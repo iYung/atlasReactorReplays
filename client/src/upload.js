@@ -200,6 +200,7 @@ class Upload extends Component {
         self.setState({fileChosen: true, map: mapData, team1: team1, team2: team2, file: f});
       } catch (error) {
         alert("Invalid file was uploaded!");
+        window.location.reload();
       }
     }
     r.readAsText(f);
