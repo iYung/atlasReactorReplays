@@ -116,9 +116,10 @@ class App extends Component {
       32:["",""],
       33:["Meridian","meridian"],
       34:["Nev3","nev3"],
-      35:["Isadora","isadora"]
+      35:["Isadora","isadora"],
+      37:["Magnus","magnus"]
     }
-    if (char > Object.keys(charArray).length + 1) {
+    if (char > Object.keys(charArray).length + 2) {
       var errorArray = ["Error fetching character", "error"];
       return errorArray[img];
     }
