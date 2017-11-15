@@ -17,6 +17,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use('/replay/*',express.static('client/build'));
     app.use('/upload',express.static('client/build'));
     app.use('/browse',express.static('client/build'));
+    app.use('/desktop',express.static('client/build'));
     port = process.env.PORT || config.serverPort;
 } else {
     port = 3000;

@@ -21,6 +21,9 @@ class Nav extends Component {
                 <Link to="/upload">
                   <Menu.Item name='upload' active={this.props.page==="upload"} onClick={this.props.handleItemClick}/>
                 </Link>
+                <Link to="/desktop">
+                  <Menu.Item name='desktop client' active={this.props.page==="desktop client"} onClick={this.props.handleItemClick}/>
+                </Link>
               </Menu>
             </Segment>
     );

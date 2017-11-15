@@ -17,6 +17,7 @@ import Upload from './upload'
 import Browse from './browse'
 import Nav from './nav'
 import Replay from './replay'
+import Desktop from './desktop'
 
 const Banner = () => { 
   return <h1 style={{ color: 'white', fontSize: '4em', fontWeight: 'normal', paddingBottom: 0, textAlign: "center"}}>
@@ -53,7 +54,7 @@ render(){
                 </p>
                 <Header as='h3' style={{ fontSize: '2em' }}>How do you watch replays?</Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  Replays can be watched ingame with the chat command /playreplay followed by the name of the replay. The replay must be in the Replays folder.
+                  Replays can be watched ingame using our desktop client or the chat command /playreplay followed by the name of the replay. The replay must be in the Replays folder.
                 </p>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
@@ -141,6 +142,7 @@ class App extends Component {
                 <Route exact path="/" render={()=>(<Home handleItemClick={this.handleItemClick}/>)}/>
                 <Route path="/browse" render={()=>(<Browse getCharName={this.getCharName}/>)}/>
                 <Route path="/upload" render={()=>(<Upload getCharName={this.getCharName}/>)}/>
+                <Route path="/desktop" render={()=>(<Desktop getCharName={this.getCharName}/>)}/>
                 <Route path="/replay/:id" render={()=>(<Replay getCharName={this.getCharName}/>)}/>
               </div>
             </Segment>
