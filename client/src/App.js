@@ -120,7 +120,8 @@ class App extends Component {
       34:["Nev3","nev3"],
       35:["Isadora","isadora"],
       36:["",""],
-      37:["Magnus","magnus"]
+      37:["Magnus","magnus"],
+      38:["Vonn","vonn"]
     }
     if (char > Object.keys(charArray).length + 1) {
       var errorArray = ["Error fetching character", "error"];
